@@ -7,6 +7,9 @@ node_modules/
 dist/
 build/
 
+# Deployment packages
+*.zip
+
 # Environment variables
 .env
 .env.local
