@@ -70,21 +70,21 @@ export default function Contact() {
     const errors = {}
     
     if (!formData.name.trim()) {
-      errors.name = 'Ім\'я обов\'язкове'
+      errors.name = t('contact.form.errors.nameRequired')
     } else if (formData.name.trim().length < 2) {
-      errors.name = 'Ім\'я має бути мінімум 2 символи'
+      errors.name = t('contact.form.errors.nameMinLength')
     }
     
     if (!formData.email.trim()) {
-      errors.email = 'Email обов\'язковий'
+      errors.email = t('contact.form.errors.emailRequired')
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = 'Введіть коректний email'
+      errors.email = t('contact.form.errors.emailInvalid')
     }
     
     if (!formData.message.trim()) {
-      errors.message = 'Повідомлення обов\'язкове'
+      errors.message = t('contact.form.errors.messageRequired')
     } else if (formData.message.trim().length < 10) {
-      errors.message = 'Повідомлення має бути мінімум 10 символів'
+      errors.message = t('contact.form.errors.messageMinLength')
     }
     
     return errors
@@ -131,7 +131,7 @@ export default function Contact() {
         // Показуємо успішне повідомлення на 5 секунд
         setTimeout(() => setSubmitStatus(null), 5000)
       } else {
-        throw new Error('Помилка відправки')
+        throw new Error(t('contact.form.error'))
       }
     } catch (error) {
       console.error('Form submission error:', error)
@@ -176,7 +176,7 @@ export default function Contact() {
     {
       icon: 'LOC',
       label: t('contact.methods.location'),
-      value: 'Чернівці, Україна',
+      value: t('contact.location'),
       href: 'https://maps.google.com/?q=Chernivtsi,Ukraine',
       color: 'from-orange-500 to-red-500'
     },
@@ -301,13 +301,13 @@ export default function Contact() {
                 }`} style={{ transitionDelay: isVisible ? '1200ms' : '0ms' }}>
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-green-400 font-semibold text-sm">Доступний для роботи</span>
+                    <span className="text-green-400 font-semibold text-sm">{t('contact.availability.available')}</span>
                   </div>
                   <p className="text-slate-400 text-sm mb-1">
-                    Відповідь протягом <span className="text-cyan-400 font-semibold">2-4 годин</span>
+                    {t('contact.availability.responseTime')} <span className="text-cyan-400 font-semibold">{t('contact.availability.hours')}</span>
                   </p>
                   <p className="text-slate-500 text-xs">
-                    Пн-Пт: 9:00-18:00 (UTC+2) • Вихідні: за домовленістю
+                    {t('contact.availability.schedule')}
                   </p>
                 </div>
               </div>
@@ -333,7 +333,7 @@ export default function Contact() {
                       <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      Повідомлення надіслано успішно! Дякую за звернення. Відповім протягом 24 годин.
+                      {t('contact.form.success')}
                     </div>
                   )}
                   
@@ -342,7 +342,7 @@ export default function Contact() {
                       <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      Сталася помилка. Спробуйте ще раз або напишіть напряму на email.
+                      {t('contact.form.error')}
                     </div>
                   )}
 
@@ -353,7 +353,7 @@ export default function Contact() {
                       : 'opacity-0 translate-x-8'
                   }`} style={{ transitionDelay: isVisible ? '1000ms' : '0ms' }}>
                     <label className="block text-sm font-medium text-slate-300 mb-2">
-                      Ім'я *
+                      {t('contact.form.name')} *
                     </label>
                     <input 
                       type="text"
@@ -361,7 +361,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      placeholder="Ваше ім'я"
+                      placeholder={t('contact.form.namePlaceholder')}
                       className={`w-full px-4 py-3 bg-slate-800/50 border rounded-xl text-white placeholder-slate-400 focus:ring-1 transition-all duration-300 hover:border-slate-500 ${
                         formErrors.name 
                           ? 'border-red-500 focus:border-red-400 focus:ring-red-400' 
@@ -380,7 +380,7 @@ export default function Contact() {
                       : 'opacity-0 translate-x-8'
                   }`} style={{ transitionDelay: isVisible ? '1100ms' : '0ms' }}>
                     <label className="block text-sm font-medium text-slate-300 mb-2">
-                      Email *
+                      {t('contact.form.email')} *
                     </label>
                     <input 
                       type="email"
@@ -388,7 +388,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      placeholder="email@example.com"
+                      placeholder={t('contact.form.emailPlaceholder')}
                       className={`w-full px-4 py-3 bg-slate-800/50 border rounded-xl text-white placeholder-slate-400 focus:ring-1 transition-all duration-300 hover:border-slate-500 ${
                         formErrors.email 
                           ? 'border-red-500 focus:border-red-400 focus:ring-red-400' 
@@ -407,7 +407,7 @@ export default function Contact() {
                       : 'opacity-0 translate-x-8'
                   }`} style={{ transitionDelay: isVisible ? '1200ms' : '0ms' }}>
                     <label className="block text-sm font-medium text-slate-300 mb-2">
-                      Повідомлення *
+                      {t('contact.form.message')} *
                     </label>
                     <textarea 
                       name="message"
@@ -415,7 +415,7 @@ export default function Contact() {
                       onChange={handleInputChange}
                       rows="6"
                       required
-                      placeholder="Розкажіть про ваш проєкт: тип додатка, технології, терміни, бюджет... Чим детальніше, тим точніше зможу оцінити можливості співпраці."
+                      placeholder={t('contact.form.messagePlaceholder')}
                       className={`w-full flex-1 px-4 py-3 bg-slate-800/50 border rounded-xl text-white placeholder-slate-400 focus:ring-1 transition-all duration-300 resize-none hover:border-slate-500 ${
                         formErrors.message 
                           ? 'border-red-500 focus:border-red-400 focus:ring-red-400' 
@@ -442,10 +442,10 @@ export default function Contact() {
                       {isSubmitting ? (
                         <>
                           <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                          Надсилається...
+                          {t('contact.form.submitting')}
                         </>
                       ) : (
-                        'Надіслати повідомлення'
+                        t('contact.form.submit')
                       )}
                     </button>
                   </div>

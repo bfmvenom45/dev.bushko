@@ -1,8 +1,10 @@
 // Video Play Button for autoplay-blocked scenarios
 import { useState } from 'react';
+import { useLanguage } from '../hooks/useLanguage';
 
 export function VideoPlayButton({ onVideoPlay }) {
   const [hidden, setHidden] = useState(false);
+  const { t } = useLanguage();
 
   const handleClick = () => {
     onVideoPlay();
@@ -19,7 +21,7 @@ export function VideoPlayButton({ onVideoPlay }) {
       >
         <div className="flex items-center gap-3 text-white">
           <div className="w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-2"></div>
-          <span className="text-lg font-semibold">Відтворити відео</span>
+          <span className="text-lg font-semibold">{t('common.playVideo')}</span>
         </div>
         
         {/* Glow effect */}

@@ -30,36 +30,7 @@ export default function Experience() {
       }
     }
   }, [])
-  const items = [
-    { 
-      title: 'Frontend Developer (самостійні проєкти)', 
-      time: '2024—2025', 
-      desc: 'React/TS, TMDB-апка, e-commerce віджети, React Three Fiber, 3D інтерактивні сцени.',
-      icon: 'DEV',
-      skills: ['React', 'TypeScript', 'Next.js', 'R3F', 'Blender']
-    },
-    { 
-      title: '3D Artist & Blender Developer', 
-      time: '2022—2024', 
-      desc: '3D моделювання, текстурування, анімація в Blender. Створення GLTF моделей для веб, оптимізація для React Three Fiber.',
-      icon: 'UI',
-      skills: ['Blender', 'GLTF', '3D Modeling', 'Animation', 'Texturing']
-    },
-    { 
-      title: 'Stock Photographer & Content Creator', 
-      time: '2017—2023', 
-      desc: 'Професійна фотографія для стокових агентств. Створення високоякісного контенту, робота з освітленням, композицією.',
-      icon: 'PHOTO',
-      skills: ['Photography', 'Lightroom', 'Photoshop', 'Stock Content', 'Visual Design']
-    },
-    { 
-      title: 'Інженер-дизайнер (Hal-Kran)', 
-      time: 'до 2016', 
-      desc: 'Львівська політехніка, інженерні системи. Проектування та розрахунок технічних рішень.',
-      icon: 'SYS',
-      skills: ['Engineering', 'CAD', 'Technical Design', 'Project Management']
-    },
-  ]
+  const items = t('experience.items')
 
   return (
     <section 

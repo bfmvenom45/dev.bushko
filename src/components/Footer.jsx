@@ -1,4 +1,8 @@
+import { useLanguage } from '../hooks/useLanguage';
+
 export default function Footer(){
+  const { t } = useLanguage();
+  
   return (
     <footer className="relative bg-slate-900 border-t border-slate-700">
       {/* Background decoration */}
@@ -18,7 +22,7 @@ export default function Footer(){
               </div>
             </div>
             <p className="text-slate-400 text-sm">
-              © {new Date().getFullYear()} Всі права захищені
+              © {new Date().getFullYear()} {t('footer.copyright')}
             </p>
           </div>
 
@@ -48,10 +52,10 @@ export default function Footer(){
           {/* Legal links */}
           <div className="flex items-center gap-6 text-sm text-slate-400">
             <a href="#" className="hover:text-cyan-400 transition-colors duration-300">
-              Політика конфіденційності
+              {t('footer.privacy')}
             </a>
             <a href="#" className="hover:text-cyan-400 transition-colors duration-300">
-              Умови використання
+              {t('footer.terms')}
             </a>
           </div>
         </div>

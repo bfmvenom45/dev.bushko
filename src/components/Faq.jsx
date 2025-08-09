@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
 import { SmartBackground } from './SmartBackground'
 import { useLanguage } from '../hooks/useLanguage'
-import { faqs } from '../data/faqs'
 
 export default function Faq() {
   const { t } = useLanguage()
+  const faqs = t('faq.items')
   const [open, setOpen] = useState(null)
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)

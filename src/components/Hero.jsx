@@ -93,7 +93,7 @@ export default function Hero() {
                             href="#contact" 
                             className="border-2 border-cyan-400/60 text-cyan-400 px-8 py-4 rounded-lg hover:bg-cyan-400/20 backdrop-blur-md hover:text-white transition-all duration-300 font-semibold text-lg transform hover:scale-105 shadow-lg"
                         >
-                            Зв'язатися
+                            {t('hero.contactButton')}
                         </a>
                     </div>
                 </div>
@@ -102,7 +102,7 @@ export default function Hero() {
             {/* Індикатор прокрутки внизу */}
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
                 <div className="flex flex-col items-center gap-2 text-slate-400">
-                    <span className="text-sm font-medium">Прокрутіть вниз</span>
+                    <span className="text-sm font-medium">{t('hero.scrollDown')}</span>
                     <div className="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center">
                         <div className="w-1 h-3 bg-gradient-to-b from-cyan-400 to-purple-600 rounded-full mt-2 animate-bounce"></div>
                     </div>

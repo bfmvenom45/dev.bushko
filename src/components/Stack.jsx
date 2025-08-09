@@ -32,28 +32,28 @@ export default function Stack() {
   }, [])
   
   const frontendSkills = [
-    { name: 'React', description: 'Бібліотека для UI', color: 'from-cyan-400 to-blue-500', icon: '⚛️' },
-    { name: 'TypeScript', description: 'Типізований JavaScript', color: 'from-blue-400 to-blue-600', icon: 'TS' },
-    { name: 'Next.js', description: 'React фреймворк', color: 'from-gray-600 to-gray-800', icon: '▲' },
-    { name: 'Tailwind CSS', description: 'Utility-first CSS', color: 'from-teal-400 to-cyan-500', icon: '🎨' },
-    { name: 'Vite', description: 'Швидкий збірщик', color: 'from-purple-400 to-purple-600', icon: '⚡' },
-    { name: 'Three.js', description: '3D графіка в браузері', color: 'from-green-400 to-emerald-500', icon: '3D' }
+    { name: 'React', description: t('stack.skills.react'), color: 'from-cyan-400 to-blue-500', icon: '⚛️' },
+    { name: 'TypeScript', description: t('stack.skills.typescript'), color: 'from-blue-400 to-blue-600', icon: 'TS' },
+    { name: 'Next.js', description: t('stack.skills.nextjs'), color: 'from-gray-600 to-gray-800', icon: '▲' },
+    { name: 'Tailwind CSS', description: t('stack.skills.tailwind'), color: 'from-teal-400 to-cyan-500', icon: '🎨' },
+    { name: 'Vite', description: t('stack.skills.vite'), color: 'from-purple-400 to-purple-600', icon: '⚡' },
+    { name: 'Three.js', description: t('stack.skills.threejs'), color: 'from-green-400 to-emerald-500', icon: '3D' }
   ]
 
   const aiSkills = [
-    { name: 'ChatGPT', description: 'AI асистент для коду', color: 'from-green-400 to-emerald-600', icon: 'GPT' },
-    { name: 'GitHub Copilot', description: 'AI програмування', color: 'from-blue-400 to-indigo-600', icon: 'CP' },
-    { name: 'Midjourney', description: 'AI генерація зображень', color: 'from-purple-400 to-pink-600', icon: 'MJ' },
-    { name: 'Claude', description: 'AI помічник Anthropic', color: 'from-orange-400 to-red-500', icon: 'CL' },
-    { name: 'Sora', description: 'AI генерація відео', color: 'from-red-400 to-pink-500', icon: 'SORA' },
-    { name: 'Runway', description: 'AI відео редагування', color: 'from-cyan-400 to-blue-500', icon: 'RW' }
+    { name: 'ChatGPT', description: t('stack.skills.chatgpt'), color: 'from-green-400 to-emerald-600', icon: 'GPT' },
+    { name: 'GitHub Copilot', description: t('stack.skills.copilot'), color: 'from-blue-400 to-indigo-600', icon: 'CP' },
+    { name: 'Midjourney', description: t('stack.skills.midjourney'), color: 'from-purple-400 to-pink-600', icon: 'MJ' },
+    { name: 'Claude', description: t('stack.skills.claude'), color: 'from-orange-400 to-red-500', icon: 'CL' },
+    { name: 'Sora', description: t('stack.skills.sora'), color: 'from-red-400 to-pink-500', icon: 'SORA' },
+    { name: 'Runway', description: t('stack.skills.runway'), color: 'from-cyan-400 to-blue-500', icon: 'RW' }
   ]
 
   const creativeSkills = [
-    { name: 'Figma', description: 'UI/UX дизайн', color: 'from-purple-400 to-pink-500', icon: '🎨' },
-    { name: 'Photoshop', description: 'Редагування зображень', color: 'from-blue-500 to-cyan-500', icon: 'Ph' },
-    { name: 'Blender', description: '3D моделювання', color: 'from-orange-400 to-red-500', icon: 'Blend' },
-    { name: 'Photography', description: 'Фотографія', color: 'from-yellow-400 to-orange-500', icon: '📷' }
+    { name: 'Figma', description: t('stack.skills.figma'), color: 'from-purple-400 to-pink-500', icon: '🎨' },
+    { name: 'Photoshop', description: t('stack.skills.photoshop'), color: 'from-blue-500 to-cyan-500', icon: 'Ph' },
+    { name: 'Blender', description: t('stack.skills.blender'), color: 'from-orange-400 to-red-500', icon: 'Blend' },
+    { name: 'Photography', description: t('stack.skills.photography'), color: 'from-yellow-400 to-orange-500', icon: '📷' }
   ]
 
   return (
@@ -159,7 +159,7 @@ export default function Stack() {
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
                 🤖 <span className="bg-gradient-to-r from-green-400 to-purple-500 bg-clip-text text-transparent">AI Tools & Assistants</span>
               </h3>
-              <p className="text-slate-400">Штучний інтелект у розробці</p>
+              <p className="text-slate-400">{t('stack.aiDesc')}</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {aiSkills.map((skill, index) => (
