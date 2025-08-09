@@ -1,5 +1,5 @@
 import { Link } from 'react-scroll'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useLanguage, LanguageSwitcher } from '../hooks/useLanguage'
 
 export default function Header() {
@@ -15,21 +15,21 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+  }, [isMobileMenuOpen])
 
-  const closeMobileMenu = () => {
+  const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false)
-  }
+  }, [])
 
-  const navigationItems = [
+  const navigationItems = useMemo(() => [
     { id: 'projects', label: t('nav.projects') },
     { id: 'stack', label: t('nav.stack') },
     { id: 'experience', label: t('nav.experience') },
     { id: 'faq', label: 'FAQ' },
     { id: 'contact', label: t('nav.contact') }
-  ]
+  ], [t])
 
   return (
     <header className={`fixed top-0 left-0 z-40 w-full transition-all duration-500 ${
@@ -37,14 +37,19 @@ export default function Header() {
     }`}>
       <div className="container flex items-center justify-between">
         {/* Logo */}
-        <div className="relative group cursor-pointer">
+        <Link 
+          to="hero" 
+          smooth 
+          offset={-80}
+          className="relative group cursor-pointer"
+        >
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
           <div className="relative px-4 py-2 bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl border border-cyan-500/30">
             <span className="font-black text-xl bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
               dev.bushko
             </span>
           </div>
-        </div>
+        </Link>
 
         {/* Navigation & Controls */}
         <div className="flex items-center gap-4">
@@ -89,7 +94,7 @@ export default function Header() {
               offset={-80}
               className="relative block px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl text-white font-semibold cursor-pointer hover:from-cyan-400 hover:to-purple-500 transition-all duration-300"
             >
-              Зв'язатись
+              {t('nav.cta')}
             </Link>
           </div>
 
@@ -113,13 +118,7 @@ export default function Header() {
       }`}>
         <div className="container py-6">
           <nav className="space-y-4">
-            {[
-              { id: 'projects', label: 'Проєкти' },
-              { id: 'stack', label: 'Навички' },
-              { id: 'experience', label: 'Досвід' },
-              { id: 'faq', label: 'FAQ' },
-              { id: 'contact', label: 'Контакти' }
-            ].map((item) => (
+            {navigationItems.map((item) => (
               <Link 
                 key={item.id} 
                 to={item.id} 
@@ -135,6 +134,8 @@ export default function Header() {
 
           {/* Mobile CTA and Phone */}
           <div className="mt-6 space-y-4">
+            <LanguageSwitcher className="sm:hidden mb-4" />
+            
             <Link 
               to="contact" 
               smooth 
@@ -142,7 +143,7 @@ export default function Header() {
               onClick={closeMobileMenu}
               className="block w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl text-white font-semibold text-center cursor-pointer hover:from-cyan-400 hover:to-purple-500 transition-all duration-300"
             >
-              Зв'язатись
+              {t('nav.cta')}
             </Link>
             
             <a 

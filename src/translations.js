@@ -7,7 +7,8 @@ export const translations = {
       experience: 'Досвід',
       projects: 'Проєкти',
       faq: 'FAQ',
-      contact: 'Контакти'
+      contact: 'Контакти',
+      cta: 'Зв\'язатись'
     },
     
     // Hero Section
@@ -142,7 +143,8 @@ export const translations = {
       experience: 'Experience',
       projects: 'Projects',
       faq: 'FAQ',
-      contact: 'Contact'
+      contact: 'Contact',
+      cta: 'Get in Touch'
     },
     
     // Hero Section
