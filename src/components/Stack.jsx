@@ -115,9 +115,9 @@ export default function Stack() {
           }`} style={{ transitionDelay: isVisible ? '400ms' : '0ms' }}>
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                💻 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Frontend Development</span>
+                💻 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">{t('stack.frontend')}</span>
               </h3>
-              <p className="text-slate-400">Сучасні веб-технології</p>
+              <p className="text-slate-400">{t('stack.frontendDesc')}</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {frontendSkills.map((skill, index) => (
@@ -199,9 +199,9 @@ export default function Stack() {
           }`} style={{ transitionDelay: isVisible ? '1000ms' : '0ms' }}>
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                🎨 <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Design & Creative</span>
+                🎨 <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">{t('stack.creative')}</span>
               </h3>
-              <p className="text-slate-400">Дизайн та креативні інструменти</p>
+              <p className="text-slate-400">{t('stack.creativeDesc')}</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {creativeSkills.map((skill, index) => (

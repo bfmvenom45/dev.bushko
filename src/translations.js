@@ -46,7 +46,9 @@ export const translations = {
       titleHighlight: 'навички',
       subtitle: 'Технології розробки та творчі інструменти для створення сучасних веб-додатків і візуального контенту',
       frontend: 'Frontend розробка',
+      frontendDesc: 'Сучасні веб-технології',
       creative: 'Креативні інструменти',
+      creativeDesc: 'Дизайн та креативні інструменти',
       stats: {
         years: 'Роки досвіду',
         projects: 'Проєктів', 
@@ -60,7 +62,13 @@ export const translations = {
       badge: 'Досвід роботи',
       title: 'Мій',
       titleHighlight: 'досвід',
-      subtitle: 'Професійний шлях та ключові досягнення у сфері Frontend розробки'
+      subtitle: 'Професійний шлях та ключові досягнення у сфері Frontend розробки',
+      stats: {
+        frontend: 'Роки у frontend',
+        blender: 'Роки 3D/Blender',
+        photography: 'Роки фотографії',
+        total: 'Років загального досвіду'
+      }
     },
 
     // Projects Section
@@ -203,7 +211,9 @@ export const translations = {
       titleHighlight: 'Skills',
       subtitle: 'Development technologies and creative tools for building modern web applications and visual content',
       frontend: 'Frontend Development',
-      creative: 'Creative Tools',
+      frontendDesc: 'Modern web technologies',
+      creative: 'Design & Creative',
+      creativeDesc: 'Design and creative tools',
       stats: {
         years: 'Years of experience',
         projects: 'Projects',
@@ -217,7 +227,13 @@ export const translations = {
       badge: 'Work Experience',
       title: 'My',
       titleHighlight: 'experience',
-      subtitle: 'Professional journey and key achievements in Frontend development'
+      subtitle: 'Professional journey and key achievements in Frontend development',
+      stats: {
+        frontend: 'Years in frontend',
+        blender: 'Years 3D/Blender',
+        photography: 'Years photography',
+        total: 'Years total experience'
+      }
     },
 
     // Projects Section

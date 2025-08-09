@@ -42,7 +42,7 @@ export default function AnimatedTitle() {
 
   return (
     <h1 
-      className={`text-5xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-tight         transition-opacity duration-400 ease-in-out transform ${
+      className={`text-5xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-tight transition-opacity duration-400 ease-in-out transform ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 -translate-y-1'

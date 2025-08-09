@@ -198,10 +198,10 @@ export default function Experience() {
             : 'opacity-0 translate-y-12'
         }`} style={{ transitionDelay: isVisible ? `${800 + (items.length * 200)}ms` : '0ms' }}>
           {[
-            { number: '2+', label: 'Роки у frontend', color: 'from-purple-400 to-cyan-400' },
-            { number: '3+', label: 'Роки 3D/Blender', color: 'from-cyan-400 to-blue-400' },
-            { number: '4+', label: 'Роки фотографії', color: 'from-blue-400 to-purple-400' },
-            { number: '10+', label: 'Років загального досвіду', color: 'from-purple-400 to-pink-400' }
+            { number: '2+', label: t('experience.stats.frontend'), color: 'from-purple-400 to-cyan-400' },
+            { number: '3+', label: t('experience.stats.blender'), color: 'from-cyan-400 to-blue-400' },
+            { number: '4+', label: t('experience.stats.photography'), color: 'from-blue-400 to-purple-400' },
+            { number: '10+', label: t('experience.stats.total'), color: 'from-purple-400 to-pink-400' }
           ].map((stat, index) => (
             <div key={index} className="group relative">
               <div className="relative p-0.5 rounded-2xl bg-gradient-to-r from-slate-700 to-slate-600 group-hover:from-purple-500/50 group-hover:to-cyan-500/50 transition-all duration-500">
