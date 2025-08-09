@@ -1,9 +1,11 @@
 import { Link } from 'react-scroll'
 import { useState, useEffect } from 'react'
+import { useLanguage, LanguageSwitcher } from '../hooks/useLanguage'
 
 export default function Header() {
   const [hasScrolled, setHasScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +23,14 @@ export default function Header() {
     setIsMobileMenuOpen(false)
   }
 
+  const navigationItems = [
+    { id: 'projects', label: t('nav.projects') },
+    { id: 'stack', label: t('nav.stack') },
+    { id: 'experience', label: t('nav.experience') },
+    { id: 'faq', label: 'FAQ' },
+    { id: 'contact', label: t('nav.contact') }
+  ]
+
   return (
     <header className={`fixed top-0 left-0 z-40 w-full transition-all duration-500 ${
       hasScrolled ? 'py-3 bg-slate-900/90 backdrop-blur-lg border-b border-cyan-500/20' : 'py-6'
@@ -36,17 +46,14 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Navigation & Contact */}
+        {/* Navigation & Controls */}
         <div className="flex items-center gap-4">
+          {/* Language Switcher */}
+          <LanguageSwitcher className="hidden sm:block" />
+          
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {[
-              { id: 'projects', label: 'Проєкти' },
-              { id: 'stack', label: 'Навички' },
-              { id: 'experience', label: 'Досвід' },
-              { id: 'faq', label: 'FAQ' },
-              { id: 'contact', label: 'Контакти' }
-            ].map((item) => (
+            {navigationItems.map((item) => (
               <Link 
                 key={item.id} 
                 to={item.id} 
