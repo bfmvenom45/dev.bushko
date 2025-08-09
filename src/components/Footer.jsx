@@ -13,7 +13,7 @@ export default function Footer(){
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               <div className="relative px-4 py-2 bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl border border-cyan-500/30">
                 <span className="font-black text-lg bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                  Олександр Бушко
+                  dev.bushko
                 </span>
               </div>
             </div>
@@ -26,9 +26,9 @@ export default function Footer(){
           <div className="flex items-center gap-4">
             {[
               { name: 'GitHub', icon: 'GIT', href: 'https://github.com/bfmvenom45' },
-              { name: 'Telegram', icon: 'TG', href: 'https://t.me/sanyabushko' },
-              { name: 'Phone', icon: '�', href: 'tel:+380988609743' },
-              { name: 'Email', icon: 'MAIL', href: 'mailto:sanya.bushko@gmail.com' }
+              { name: 'Telegram', icon: 'TG', href: 'https://t.me/sanya.bushko' },
+              { name: 'Phone', icon: '📱', href: 'tel:+380988609743' },
+              { name: 'Email', icon: 'MAIL', href: 'mailto:dev.bushko@gmail.com' }
             ].map((social) => (
               <a
                 key={social.name}

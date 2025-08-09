@@ -1,27 +1,79 @@
 import { projects } from '../data/projects'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Projects() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
     <section 
+      ref={sectionRef}
       id="projects" 
-      className="section relative overflow-hidden"
-      style={{
-        backgroundImage: 'url(/images/images/bg-portfolio.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      className={`section relative overflow-hidden transition-all duration-1000 transform ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-16'
+      }`}
     >
+      {/* Розмитий фон */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'url(/images/images/bg-portfolio.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          filter: 'blur(3px)',
+          transform: 'scale(1.1)'
+        }}
+      ></div>
+      
       {/* Main gradient overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-slate-800/90"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-900/80 to-slate-800/95 backdrop-blur-sm"></div>
       
       {/* Background decorations */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/5 to-pink-500/5 rounded-full blur-3xl"></div>
+      <div className={`absolute top-1/4 left-1/4 w-48 h-48 bg-gradient-to-r from-cyan-500/3 to-blue-500/3 rounded-full blur-3xl animate-float-left transition-all duration-1500 transform ${
+        isVisible 
+          ? 'opacity-60 scale-100' 
+          : 'opacity-0 scale-75'
+      }`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}></div>
+      <div className={`absolute bottom-1/4 right-1/4 w-60 h-60 bg-gradient-to-r from-purple-500/3 to-pink-500/3 rounded-full blur-3xl animate-float-right transition-all duration-1500 transform ${
+        isVisible 
+          ? 'opacity-60 scale-100' 
+          : 'opacity-0 scale-75'
+      }`} style={{ transitionDelay: isVisible ? '300ms' : '0ms' }}></div>
       
       <div className="container relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 transform ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-12'
+        }`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-6">
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
             <span className="text-xs font-semibold text-cyan-300 uppercase tracking-wider">Портфоліо</span>
@@ -55,8 +107,14 @@ export default function Projects() {
           {projects.map((project, index) => (
             <article 
               key={project.title} 
-              className="group relative"
-              style={{ animationDelay: `${index * 200}ms` }}
+              className={`group relative transition-all duration-1000 transform ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0 scale-100' 
+                  : 'opacity-0 translate-y-16 scale-95'
+              }`}
+              style={{ 
+                transitionDelay: isVisible ? `${400 + (index * 150)}ms` : '0ms'
+              }}
             >
               {/* Card with gradient border */}
               <div className="relative p-0.5 rounded-2xl bg-gradient-to-r from-cyan-500/30 via-blue-500/30 to-purple-500/30 group-hover:from-cyan-400/50 group-hover:via-blue-400/50 group-hover:to-purple-400/50 transition-all duration-500">
@@ -160,7 +218,11 @@ export default function Projects() {
         </div>
 
         {/* Call to action */}
-        <div className="mt-16 text-center">
+        <div className={`mt-16 text-center transition-all duration-1000 transform ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-12'
+        }`} style={{ transitionDelay: isVisible ? `${600 + (projects.length * 150)}ms` : '0ms' }}>
           <div className="relative group inline-block">
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
             <a 
@@ -175,7 +237,11 @@ export default function Projects() {
         </div>
 
         {/* Bottom decorative line */}
-        <div className="mt-16 flex justify-center">
+        <div className={`mt-16 flex justify-center transition-all duration-1000 transform ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`} style={{ transitionDelay: isVisible ? `${800 + (projects.length * 150)}ms` : '0ms' }}>
           <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
         </div>
       </div>

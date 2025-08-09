@@ -2,6 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Анімац.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 7s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-lightning {
+  animation: float-lightning 3s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-float-left {
+  animation: float-left 10s ease-in-out infinite;
+}
+
+.animate-float-right {
+  animation: float-right 12s ease-in-out infinite;
+}онок */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-3deg); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(3deg); }
+}
+
+@keyframes float-lightning {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+    filter: brightness(1);
+  }
+  25% { 
+    transform: translateY(-10px) rotate(-2deg) scale(1.1); 
+    filter: brightness(1.3);
+  }
+  50% { 
+    transform: translateY(-20px) rotate(2deg) scale(1); 
+    filter: brightness(1.5);
+  }
+  75% { 
+    transform: translateY(-10px) rotate(-1deg) scale(1.05); 
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(0.8); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2); 
+  }
+}
+
+/* Фонові анімації */
+@keyframes float-left {
+  0%, 100% { 
+    transform: translateX(0px) translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateX(-30px) translateY(-20px) rotate(5deg); 
+  }
+}
+
+@keyframes float-right {
+  0%, 100% { 
+    transform: translateX(0px) translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateX(30px) translateY(20px) rotate(-5deg); 
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite 2s;
+}
+
+.animate-float-slow {
+  animation: float-slow 10s ease-in-out infinite 1s;
+}
+
+.animate-float-lightning {
+  animation: float-lightning 4s ease-in-out infinite 0.5s;
+}
+
+.animate-sparkle {
+  animation: sparkle 3s ease-in-out infinite;
+}
+
 /* Xora-inspired design system */
 :root {
   --bg-primary: #0f172a; /* slate-900 */

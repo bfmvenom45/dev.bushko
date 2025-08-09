@@ -1,49 +1,104 @@
 import { SmartBackground } from './SmartBackground'
 import { translations } from '../translations'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Stack() {
   const language = 'uk' // Default to Ukrainian
   const t = translations[language]
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
   
-  const techSkills = [
-    { name: 'React', level: '90%', color: '#61DAFB', category: 'frontend', icon: '⚛️' },
-    { name: 'TypeScript', level: '80%', color: '#3178C6', category: 'frontend', icon: 'TS' },
-    { name: 'Next.js', level: '85%', color: '#000000', category: 'frontend', icon: '▲' },
-    { name: 'Tailwind', level: '95%', color: '#06B6D4', category: 'frontend', icon: '🎨' },
-    { name: 'Three.js', level: '75%', color: '#000000', category: 'frontend', icon: '3D' }
+  const frontendSkills = [
+    { name: 'React', description: 'Бібліотека для UI', color: 'from-cyan-400 to-blue-500', icon: '⚛️' },
+    { name: 'TypeScript', description: 'Типізований JavaScript', color: 'from-blue-400 to-blue-600', icon: 'TS' },
+    { name: 'Next.js', description: 'React фреймворк', color: 'from-gray-600 to-gray-800', icon: '▲' },
+    { name: 'Tailwind CSS', description: 'Utility-first CSS', color: 'from-teal-400 to-cyan-500', icon: '🎨' },
+    { name: 'Vite', description: 'Швидкий збірщик', color: 'from-purple-400 to-purple-600', icon: '⚡' },
+    { name: 'Three.js', description: '3D графіка в браузері', color: 'from-green-400 to-emerald-500', icon: '3D' }
+  ]
+
+  const aiSkills = [
+    { name: 'ChatGPT', description: 'AI асистент для коду', color: 'from-green-400 to-emerald-600', icon: 'GPT' },
+    { name: 'GitHub Copilot', description: 'AI програмування', color: 'from-blue-400 to-indigo-600', icon: 'CP' },
+    { name: 'Midjourney', description: 'AI генерація зображень', color: 'from-purple-400 to-pink-600', icon: 'MJ' },
+    { name: 'Claude', description: 'AI помічник Anthropic', color: 'from-orange-400 to-red-500', icon: 'CL' },
+    { name: 'Sora', description: 'AI генерація відео', color: 'from-red-400 to-pink-500', icon: 'SORA' },
+    { name: 'Runway', description: 'AI відео редагування', color: 'from-cyan-400 to-blue-500', icon: 'RW' }
   ]
 
   const creativeSkills = [
-    { name: 'Blender', level: '85%', color: '#F5792A', category: 'creative', icon: '🎲' },
-    { name: 'Photoshop', level: '90%', color: '#31A8FF', category: 'creative', icon: '🖼️' },
-    { name: 'Lightroom', level: '95%', color: '#31A8FF', category: 'creative', icon: 'LR' },
-    { name: 'Photography', level: '88%', color: '#FF6B6B', category: 'creative', icon: '📷' },
-    { name: 'Midjourney', level: '80%', color: '#9333EA', category: 'creative', icon: '🎭' },
-    { name: 'Sora', level: '75%', color: '#10B981', category: 'creative', icon: '🎬' }
+    { name: 'Figma', description: 'UI/UX дизайн', color: 'from-purple-400 to-pink-500', icon: '🎨' },
+    { name: 'Photoshop', description: 'Редагування зображень', color: 'from-blue-500 to-cyan-500', icon: 'Ph' },
+    { name: 'Blender', description: '3D моделювання', color: 'from-orange-400 to-red-500', icon: 'Blend' },
+    { name: 'Photography', description: 'Фотографія', color: 'from-yellow-400 to-orange-500', icon: '📷' }
   ]
 
   return (
-    <section id="stack" className="section relative overflow-hidden">
+    <section 
+      ref={sectionRef}
+      id="stack" 
+      className={`section relative overflow-hidden transition-all duration-1000 transform ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-16'
+      }`}
+    >
       {/* Background Image */}
       <SmartBackground 
         imageSrc="/images/optimized/bg-skills-1920.webp"
-        overlayClasses="bg-gradient-to-br from-slate-900/85 via-slate-900/75 to-slate-800/85"
+        overlayClasses="bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-slate-800/90"
       />
       
-      {/* Background decorations */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-cyan-500/10 to-green-500/10 rounded-full blur-3xl"></div>
+      {/* Background decorations with animation */}
+      <div className={`absolute top-1/4 left-1/4 w-48 h-48 bg-gradient-to-r from-blue-500/6 to-purple-500/6 rounded-full blur-3xl animate-float-left transition-all duration-1500 transform ${
+        isVisible 
+          ? 'opacity-60 scale-100' 
+          : 'opacity-0 scale-75'
+      }`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}></div>
+      <div className={`absolute bottom-1/4 right-1/4 w-60 h-60 bg-gradient-to-r from-cyan-500/6 to-green-500/6 rounded-full blur-3xl animate-float-right transition-all duration-1500 transform ${
+        isVisible 
+          ? 'opacity-60 scale-100' 
+          : 'opacity-0 scale-75'
+      }`} style={{ transitionDelay: isVisible ? '300ms' : '0ms' }}></div>
       
       <div className="container relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 mb-6">
+        <div className={`text-center mb-16 transition-all duration-1000 transform ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-12'
+        }`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-md mb-6">
             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
             <span className="text-xs font-semibold text-blue-300 uppercase tracking-wider">{t.stack.badge}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            {t.stack.title}
+            Мої <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">навички</span>
           </h2>
           
           <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
@@ -51,104 +106,133 @@ export default function Stack() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Frontend Skills */}
-          <div className="relative">
-            <div className="relative p-0.5 rounded-3xl bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30">
-              <div className="relative p-8 rounded-3xl bg-slate-900/90 backdrop-blur-sm">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-400 to-purple-600 flex items-center justify-center text-2xl">
-                    💻
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">{t.stack.frontend}</h3>
-                    <p className="text-slate-400">Сучасні веб-технології</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-6">
-                  {techSkills.map((skill, index) => (
-                    <div key={index} className="group">
-                      <div className="flex items-center gap-4 mb-3">
-                        <div className="w-12 h-12 rounded-xl bg-slate-800/50 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition-transform duration-300 text-white">
-                          {skill.icon}
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="font-semibold text-white">{skill.name}</span>
-                            <span className="text-sm text-slate-400">{skill.level}</span>
-                          </div>
-                          <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-gradient-to-r from-blue-400 to-purple-600 rounded-full transition-all duration-1000 ease-out"
-                              style={{ width: skill.level }}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
+        {/* Skills Grid */}
+        <div className="space-y-12">
+          {/* Frontend Development */}
+          <div className={`transition-all duration-1000 transform ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-16'
+          }`} style={{ transitionDelay: isVisible ? '400ms' : '0ms' }}>
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                💻 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Frontend Development</span>
+              </h3>
+              <p className="text-slate-400">Сучасні веб-технології</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {frontendSkills.map((skill, index) => (
+                <div 
+                  key={skill.name}
+                  className={`group relative p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-700/50 hover:border-slate-600/80 transition-all duration-500 hover:scale-105 transform ${
+                    isVisible 
+                      ? 'opacity-100 translate-y-0 scale-100' 
+                      : 'opacity-0 translate-y-8 scale-95'
+                  }`}
+                  style={{ 
+                    transitionDelay: isVisible ? `${500 + (index * 100)}ms` : '0ms'
+                  }}
+                >
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg flex items-center justify-center group-hover:border-white/20 transition-all duration-300">
+                      <span className={`text-2xl font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}>
+                        {skill.icon}
+                      </span>
                     </div>
-                  ))}
+                    <h4 className="font-semibold text-white mb-2">{skill.name}</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">{skill.description}</p>
+                  </div>
+                  
+                  {/* Hover glow effect */}
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Creative Skills */}
-          <div className="relative">
-            <div className="relative p-0.5 rounded-3xl bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-orange-500/30">
-              <div className="relative p-8 rounded-3xl bg-slate-900/90 backdrop-blur-sm">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-400 to-pink-600 flex items-center justify-center text-2xl">
-                    🎨
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">{t.stack.creative}</h3>
-                    <p className="text-slate-400">Дизайн та креативні інструменти</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-6">
-                  {creativeSkills.map((skill, index) => (
-                    <div key={index} className="group">
-                      <div className="flex items-center gap-4 mb-3">
-                        <div className="w-12 h-12 rounded-xl bg-slate-800/50 flex items-center justify-center text-lg font-bold group-hover:scale-110 transition-transform duration-300 text-white">
-                          {skill.icon}
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="font-semibold text-white">{skill.name}</span>
-                            <span className="text-sm text-slate-400">{skill.level}</span>
-                          </div>
-                          <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-gradient-to-r from-purple-400 to-pink-600 rounded-full transition-all duration-1000 ease-out"
-                              style={{ width: skill.level }}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
+          {/* AI Tools */}
+          <div className={`transition-all duration-1000 transform ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-16'
+          }`} style={{ transitionDelay: isVisible ? '700ms' : '0ms' }}>
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                🤖 <span className="bg-gradient-to-r from-green-400 to-purple-500 bg-clip-text text-transparent">AI Tools & Assistants</span>
+              </h3>
+              <p className="text-slate-400">Штучний інтелект у розробці</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {aiSkills.map((skill, index) => (
+                <div 
+                  key={skill.name}
+                  className={`group relative p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-700/50 hover:border-slate-600/80 transition-all duration-500 hover:scale-105 transform ${
+                    isVisible 
+                      ? 'opacity-100 translate-y-0 scale-100' 
+                      : 'opacity-0 translate-y-8 scale-95'
+                  }`}
+                  style={{ 
+                    transitionDelay: isVisible ? `${800 + (index * 100)}ms` : '0ms'
+                  }}
+                >
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg flex items-center justify-center group-hover:border-white/20 transition-all duration-300">
+                      <span className={`text-2xl font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}>
+                        {skill.icon}
+                      </span>
                     </div>
-                  ))}
+                    <h4 className="font-semibold text-white mb-2">{skill.name}</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">{skill.description}</p>
+                  </div>
+                  
+                  {/* Hover glow effect */}
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Additional Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { number: '3+', label: t.stack.stats.years, icon: '📅' },
-            { number: '50+', label: t.stack.stats.projects, icon: '🚀' },
-            { number: '15+', label: t.stack.stats.technologies, icon: '⚡' },
-            { number: '100%', label: t.stack.stats.satisfaction, icon: '😊' }
-          ].map((stat, index) => (
-            <div key={index} className="text-center p-6 rounded-2xl bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 group">
-              <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
-              <div className="text-3xl md:text-4xl font-black text-white mb-2">{stat.number}</div>
-              <div className="text-sm text-slate-400">{stat.label}</div>
+          {/* Creative Tools */}
+          <div className={`transition-all duration-1000 transform ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-16'
+          }`} style={{ transitionDelay: isVisible ? '1000ms' : '0ms' }}>
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                🎨 <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Design & Creative</span>
+              </h3>
+              <p className="text-slate-400">Дизайн та креативні інструменти</p>
             </div>
-          ))}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {creativeSkills.map((skill, index) => (
+                <div 
+                  key={skill.name}
+                  className={`group relative p-6 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-700/50 hover:border-slate-600/80 transition-all duration-500 hover:scale-105 transform ${
+                    isVisible 
+                      ? 'opacity-100 translate-y-0 scale-100' 
+                      : 'opacity-0 translate-y-8 scale-95'
+                  }`}
+                  style={{ 
+                    transitionDelay: isVisible ? `${1100 + (index * 100)}ms` : '0ms'
+                  }}
+                >
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 shadow-lg flex items-center justify-center group-hover:border-white/20 transition-all duration-300">
+                      <span className={`text-2xl font-bold bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}>
+                        {skill.icon}
+                      </span>
+                    </div>
+                    <h4 className="font-semibold text-white mb-2">{skill.name}</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">{skill.description}</p>
+                  </div>
+                  
+                  {/* Hover glow effect */}
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
