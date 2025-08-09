@@ -1,26 +1,24 @@
 import { useState, useEffect } from 'react'
+import { useLanguage } from '../hooks/useLanguage'
 
 export default function AnimatedTitle() {
+  const { t } = useLanguage()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
 
-  // Ваші варіанти заголовків
+  // Динамічні заголовки з перекладів
   const titles = [
     {
-      part1: "Створюю швидкі",
-      part2: "та акуратні інтерфейси"
+      part1: t('hero.title1.part1'),
+      part2: t('hero.title1.part2')
     },
     {
-      part1: "Створюю сучасні",
-      part2: "веб-рішення"
+      part1: t('hero.title2.part1'),
+      part2: t('hero.title2.part2')
     },
     {
-      part1: "Frontend",
-      part2: "розробник"
-    },
-    {
-      part1: "React",
-      part2: "додатки"
+      part1: t('hero.title3.part1'),
+      part2: t('hero.title3.part2')
     }
   ]
 

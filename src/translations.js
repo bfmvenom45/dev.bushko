@@ -24,7 +24,19 @@ export const translations = {
       email: 'dev.bushko@gmail.com',
       emailButton: 'Написати листа',
       availableText: 'Доступний для нових проєктів',
-      responseTime: 'Відповідь протягом 2-4 годин'
+      responseTime: 'Відповідь протягом 2-4 годин',
+      title1: {
+        part1: 'Створюю швидкі',
+        part2: 'та акуратні інтерфейси'
+      },
+      title2: {
+        part1: 'Створюю сучасні',
+        part2: 'веб-рішення'
+      },
+      title3: {
+        part1: 'Frontend',
+        part2: 'розробник'
+      }
     },
 
     // Stack Section  
@@ -169,7 +181,19 @@ export const translations = {
       email: 'dev.bushko@gmail.com',
       emailButton: 'Send Email',
       availableText: 'Available for new projects',
-      responseTime: 'Response within 2-4 hours'
+      responseTime: 'Response within 2-4 hours',
+      title1: {
+        part1: 'Creating fast',
+        part2: 'and clean interfaces'
+      },
+      title2: {
+        part1: 'Building modern',
+        part2: 'web solutions'
+      },
+      title3: {
+        part1: 'Frontend',
+        part2: 'Developer'
+      }
     },
 
     // Stack Section
