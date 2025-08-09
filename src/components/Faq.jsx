@@ -1,14 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 import { SmartBackground } from './SmartBackground'
-import { translations } from '../translations'
+import { useLanguage } from '../hooks/useLanguage'
 import { faqs } from '../data/faqs'
 
 export default function Faq() {
+  const { t } = useLanguage()
   const [open, setOpen] = useState(null)
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
-  const language = 'uk' // Default to Ukrainian
-  const t = translations[language]
 
   useEffect(() => {
     const observer = new IntersectionObserver(

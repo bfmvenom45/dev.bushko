@@ -1,7 +1,9 @@
 import OptimizedVideoBackground from './OptimizedVideoBackground'
+import { useLanguage } from '../hooks/useLanguage'
 import { useEffect, useRef, useState } from 'react'
 
 export default function Experience() {
+  const { t } = useLanguage()
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
 

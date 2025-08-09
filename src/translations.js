@@ -76,7 +76,15 @@ export const translations = {
       titleHighlight: 'Створимо',
       titleEnd: 'Разом',
       subtitle: 'Frontend Developer з досвідом у React, TypeScript та сучасних веб-технологіях. Відкритий для нових проєктів та співпраці.',
-      contactInfo: 'Контактна інформація',
+      infoTitle: 'Контактна інформація',
+      formTitle: 'Обговорити проєкт',
+      formDescription: 'Заповніть форму, і я зв\'яжуся з вами найближчим часом для обговорення деталей вашого проєкту.',
+      methods: {
+        email: 'Email',
+        phone: 'Телефон',
+        location: 'Локація',
+        timezone: 'Часовий пояс'
+      },
       projectDiscussion: 'Обговорити проєкт',
       formDescription: 'Заповніть форму, і я зв\'яжуся з вами найближчим часом для обговорення деталей вашого проєкту.',
       form: {
@@ -212,7 +220,15 @@ export const translations = {
       titleHighlight: 'Create',
       titleEnd: 'Together',
       subtitle: 'Frontend Developer with experience in React, TypeScript and modern web technologies. Open to new projects and collaboration.',
-      contactInfo: 'Contact Information',
+      infoTitle: 'Contact Information',
+      formTitle: 'Discuss Project',
+      formDescription: 'Fill out the form and I\'ll get back to you soon to discuss your project details.',
+      methods: {
+        email: 'Email',
+        phone: 'Phone',
+        location: 'Location',
+        timezone: 'Time Zone'
+      },
       projectDiscussion: 'Discuss Project',
       formDescription: 'Fill out the form and I\'ll get back to you soon to discuss your project details.',
       form: {

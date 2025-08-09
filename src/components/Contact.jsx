@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { SmartBackground } from './SmartBackground'
+import { useLanguage } from '../hooks/useLanguage'
 
 // ============= НАЛАШТУВАННЯ КОНТАКТІВ =============
 // 1. Замініть всі "ваш" у contactMethods на реальні дані
@@ -8,6 +9,7 @@ import { SmartBackground } from './SmartBackground'
 // ================================================
 
 export default function Contact() {
+  const { t } = useLanguage()
   const [isVisible, setIsVisible] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
@@ -142,17 +144,17 @@ export default function Contact() {
     }
   }
 
-  const contactMethods = [
+    const contactMethods = [
     {
       icon: 'MAIL',
-      label: 'Email',
+      label: t('contact.methods.email'),
       value: 'dev.bushko@gmail.com',
       href: 'mailto:dev.bushko@gmail.com',
       color: 'from-red-500 to-pink-500'
     },
     {
       icon: 'TEL',
-      label: 'Телефон',
+      label: t('contact.methods.phone'),
       value: '+380 98 860 97 43',
       href: 'tel:+380988609743',
       color: 'from-green-500 to-emerald-500'
@@ -167,20 +169,20 @@ export default function Contact() {
     {
       icon: 'GIT',
       label: 'GitHub',
-      value: 'github.com/bfmvenom45',
+      value: 'bfmvenom45',
       href: 'https://github.com/bfmvenom45',
-      color: 'from-purple-500 to-indigo-500'
+      color: 'from-gray-500 to-slate-500'
     },
     {
       icon: 'LOC',
-      label: 'Локація',
+      label: t('contact.methods.location'),
       value: 'Чернівці, Україна',
       href: 'https://maps.google.com/?q=Chernivtsi,Ukraine',
       color: 'from-orange-500 to-red-500'
     },
     {
       icon: 'TIME',
-      label: 'Часовий пояс',
+      label: t('contact.methods.timezone'),
       value: 'UTC+2 (EET)',
       href: '#',
       color: 'from-indigo-500 to-purple-500'
@@ -224,15 +226,15 @@ export default function Contact() {
         }`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-500/30 bg-green-500/10 backdrop-blur-md mb-6">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-xs font-semibold text-green-300 uppercase tracking-wider">Зв'язок</span>
+            <span className="text-xs font-semibold text-green-300 uppercase tracking-wider">{t('contact.badge')}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Давайте <span className="bg-gradient-to-r from-green-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent">Створимо</span> Разом
+            {t('contact.title')} <span className="bg-gradient-to-r from-green-400 via-cyan-500 to-blue-600 bg-clip-text text-transparent">{t('contact.titleHighlight')}</span> {t('contact.titleEnd')}
           </h2>
           
           <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Frontend Developer з досвідом у React, TypeScript та сучасних веб-технологіях. Відкритий для нових проєктів та співпраці.
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -253,7 +255,7 @@ export default function Contact() {
             {/* Contact card in form style */}
             <div className="relative p-0.5 rounded-3xl bg-gradient-to-r from-green-500/30 via-cyan-500/30 to-blue-500/30 hover:from-green-400/40 hover:via-cyan-400/40 hover:to-blue-400/40 transition-all duration-500 h-full">
               <div className="relative p-8 rounded-3xl bg-slate-900/90 backdrop-blur-sm h-full flex flex-col">
-                <h3 className="text-2xl font-bold text-white mb-8">Контактна інформація</h3>
+                <h3 className="text-2xl font-bold text-white mb-8">{t('contact.infoTitle')}</h3>
                 
                 <div className="space-y-6 flex-1">
                   {contactMethods.map((contact, index) => (
@@ -320,8 +322,8 @@ export default function Contact() {
           }`} style={{ transitionDelay: isVisible ? '800ms' : '0ms' }}>
             <div className="relative p-0.5 rounded-3xl bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-pink-500/30 hover:from-blue-400/40 hover:via-purple-400/40 hover:to-pink-400/40 transition-all duration-500 h-full">
               <div className="relative p-8 rounded-3xl bg-slate-900/90 backdrop-blur-sm h-full flex flex-col">
-                <h3 className="text-2xl font-bold text-white mb-6">Обговорити проєкт</h3>
-                <p className="text-slate-400 text-sm mb-8">Заповніть форму, і я зв'яжуся з вами найближчим часом для обговорення деталей вашого проєкту.</p>
+                <h3 className="text-2xl font-bold text-white mb-6">{t('contact.formTitle')}</h3>
+                <p className="text-slate-400 text-sm mb-8">{t('contact.formDescription')}</p>
                 
                 <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
                   

@@ -1,10 +1,9 @@
 import AnimatedTitle from './AnimatedTitle'
 import OptimizedVideoBackground from './OptimizedVideoBackground'
-import { translations } from '../translations'
+import { useLanguage } from '../hooks/useLanguage'
 
 export default function Hero() {
-    const language = 'uk' // Default to Ukrainian
-    const t = translations[language]
+    const { t } = useLanguage()
 
     return (
         <section 

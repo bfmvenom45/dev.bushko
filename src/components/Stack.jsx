@@ -1,10 +1,9 @@
 import { SmartBackground } from './SmartBackground'
-import { translations } from '../translations'
+import { useLanguage } from '../hooks/useLanguage'
 import { useEffect, useRef, useState } from 'react'
 
 export default function Stack() {
-  const language = 'uk' // Default to Ukrainian
-  const t = translations[language]
+  const { t } = useLanguage()
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
 

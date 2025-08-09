@@ -1,7 +1,9 @@
 import { projects } from '../data/projects'
+import { useLanguage } from '../hooks/useLanguage'
 import { useEffect, useRef, useState } from 'react'
 
 export default function Projects() {
+  const { t } = useLanguage()
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
 
