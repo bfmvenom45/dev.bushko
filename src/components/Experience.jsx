@@ -102,15 +102,15 @@ export default function Experience() {
         }`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-md mb-6">
             <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-            <span className="text-xs font-semibold text-purple-300 uppercase tracking-wider">Кар'єра</span>
+            <span className="text-xs font-semibold text-purple-300 uppercase tracking-wider">{t('experience.badge')}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Мій <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">досвід</span>
+            {t('experience.title')} <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">{t('experience.titleHighlight')}</span>
           </h2>
           
           <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Від фотографії та 3D-артa до frontend розробки — різноманітний творчий шлях
+            {t('experience.subtitle')}
           </p>
         </div>
 

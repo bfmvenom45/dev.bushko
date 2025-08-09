@@ -93,15 +93,15 @@ export default function Stack() {
         }`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-md mb-6">
             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-            <span className="text-xs font-semibold text-blue-300 uppercase tracking-wider">{t.stack.badge}</span>
+            <span className="text-xs font-semibold text-blue-300 uppercase tracking-wider">{t('stack.badge')}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Мої <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">навички</span>
+            {t('stack.title')} <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">{t('stack.titleHighlight')}</span>
           </h2>
           
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            {t.stack.subtitle}
+                    <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            {t('stack.subtitle')}
           </p>
         </div>
 

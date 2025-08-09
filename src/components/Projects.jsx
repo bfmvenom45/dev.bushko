@@ -78,16 +78,16 @@ export default function Projects() {
         }`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-6">
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-            <span className="text-xs font-semibold text-cyan-300 uppercase tracking-wider">Портфоліо</span>
+            <span className="text-xs font-semibold text-cyan-300 uppercase tracking-wider">{t('projects.badge')}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Обрані <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">проєкти</span>
+            {t('projects.title')} <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">{t('projects.titleHighlight')}</span>
           </h2>
           
           <div className="flex items-center justify-between max-w-4xl mx-auto">
             <div className="flex-1"></div>
-            <p className="text-slate-300 text-lg">Найкращі роботи з мого портфоліо</p>
+            <p className="text-slate-300 text-lg">{t('projects.subtitle')}</p>
             <div className="flex-1 flex justify-end">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-700 to-slate-600 rounded-xl"></div>

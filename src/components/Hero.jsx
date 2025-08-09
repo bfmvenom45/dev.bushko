@@ -81,12 +81,12 @@ export default function Hero() {
                     {/* Статус бейдж */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-8">
                         <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                        <span className="text-sm font-semibold text-cyan-300 uppercase tracking-wider">{t.hero.badge}</span>
+                        <span className="text-sm font-semibold text-cyan-300 uppercase tracking-wider">{t('hero.badge')}</span>
                     </div>
                     
                     <AnimatedTitle />
                     <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed opacity-90">
-                        {t.hero.subtitle}
+                        {t('hero.subtitle')}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <a 

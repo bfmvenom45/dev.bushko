@@ -30,7 +30,8 @@ export const translations = {
     // Stack Section  
     stack: {
       badge: 'Технічний стек',
-      title: 'Мої навички',
+      title: 'Мої',
+      titleHighlight: 'навички',
       subtitle: 'Технології розробки та творчі інструменти для створення сучасних веб-додатків і візуального контенту',
       frontend: 'Frontend розробка',
       creative: 'Креативні інструменти',
@@ -174,7 +175,8 @@ export const translations = {
     // Stack Section
     stack: {
       badge: 'Tech Stack',
-      title: 'My Skills',
+      title: 'My',
+      titleHighlight: 'Skills',
       subtitle: 'Development technologies and creative tools for building modern web applications and visual content',
       frontend: 'Frontend Development',
       creative: 'Creative Tools',
