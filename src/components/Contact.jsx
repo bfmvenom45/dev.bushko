@@ -162,8 +162,8 @@ export default function Contact() {
     {
       icon: 'TG',
       label: 'Telegram',
-      value: '@sanya.bushko',
-      href: 'https://t.me/sanya.bushko',
+      value: '@sanyabushko',
+      href: 'https://t.me/sanyabushko',
       color: 'from-blue-500 to-cyan-500'
     },
     {
